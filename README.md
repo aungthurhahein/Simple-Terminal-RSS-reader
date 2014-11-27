@@ -10,8 +10,9 @@ Just a simple feed reader with
 
 Suitable for guys reading news at terminal like pretending to work.
 
-Just scroll the feed and save to your <a href="http://getpocket.com/a/">pocket</a> for later read.
+The default new sources are the popular ones among web developers and designers. 
 
+Just scroll the feed and save to your <a href="http://getpocket.com/a/">pocket</a> for later read.
 
 ### Dependencies
 
@@ -19,12 +20,14 @@ Just scroll the feed and save to your <a href="http://getpocket.com/a/">pocket</
 
 * <a href="https://pythonhosted.org/feedparser/basic.html">feedparser</a>
 
+```
     $ pip install argparse
     $ pip install feeparser
+```
 
 ### Usage
 
-    $ python feedparser.py -w <i>website-initials</i>
+    $ python feedparser.py -w website-initials
 
 ### Default configured websites
 
