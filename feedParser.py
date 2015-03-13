@@ -1,25 +1,22 @@
-#-------------------------------------------------------------------------#
 #!/usr/bin/env python
+"""
 # a simple terminal feed parser to checkout web and development sources
 # usage: python feedparser.py -w websiteInitials(ph,hn,gh..)
-
 # Date: 19.12.2014
 # author: Aung
-#-------------------------------------------------------------------------#
 __author__ = 'aungthurhahein@aol.com'
 __version__ = '0.1'
-
-
-import sys,os
+"""
+import sys
+import os
 import time
-import json, requests
+import json
+import requests
 import webbrowser
-#Pocket api wrapper-Copyright 2014 Felipe Borges <felipe10borges@gmail.com>
-import pocket
-
-# these might need to install
+import pocket  # Pocket api wrapper-Copyright 2014 Felipe Borges <felipe10borges@gmail.com>
 import argparse
 import feedparser
+import curses
 
 
 # get website from initial
@@ -35,14 +32,15 @@ def main(website):
         'sb': 'http://feeds.feedburner.com/SidebarFeed',
         'sd':  'http://rss.slashdot.org/Slashdot/slashdot'
     }
-    website = website.lower() #chage initials to lowercase for consistency
-    rss_url =website_list.get(website)
+    website_l = website.lower()  # chage initials to lowercase for consistency
+    rss_url =website_list.get(website_l)
     try:
         rss_parse(rss_url)
     except:
         print 'website initials not recognised.'
 
-#arguments parser
+
+# arguments parser
 def ParseCommandLine():
     parser = argparse.ArgumentParser('simple rss feed parser from popular web development and design sources: '
                                      'Product Hunt, '
@@ -57,9 +55,9 @@ def ParseCommandLine():
     theArgs = parser.parse_args()
     return theArgs
 
-#needs to improve
-#TODO: add to pocket by keyboard input
-#TODO: print as list with pointer
+# needs to improve
+# TODO: add to pocket by keyboard input
+# TODO: print as list with pointer
 
 # parse it
 def rss_parse(urlfool):
@@ -100,7 +98,7 @@ def PocketAuth():
     print "Do you want to use pocket to save news?(y/n)"
     Pocket_User= raw_input("> ")
 
-    #step3
+    # step3
     if Pocket_User == "y":
         print "pocket authorization page will open in your default browser. This is one time only.I swears..."
         time.sleep(1)
@@ -138,6 +136,7 @@ def readPocket():
     configfile.close()
 
     return accesstoken
+
 
 # added to pocket
 def addtoPocket(aToken,url):
